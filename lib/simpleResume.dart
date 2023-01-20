@@ -38,6 +38,8 @@ class _ResumeState extends State<Resume> {
                 SizedBox(
                   height: 20,
                 ),
+                Icon(Icons.all_inclusive,size: 50,),
+                SizedBox(height: 20,),
                 Container(
                   height: 40,
                   width: 300,
