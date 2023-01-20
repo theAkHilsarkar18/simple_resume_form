@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 class Resume extends StatefulWidget {
@@ -9,6 +11,9 @@ class Resume extends StatefulWidget {
 
 class _ResumeState extends State<Resume> {
   String town = "Surat";
+  String selected = "Male";
+  bool onOff = false;
+  bool onOff2 = false;
   bool skill1 = true;
   bool skill2 = false;
   bool skill3 = false;
@@ -172,7 +177,7 @@ class _ResumeState extends State<Resume> {
                   height: 20,
                 ),
                 Container(
-                  height:40,
+                  height: 40,
                   width: 300,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
@@ -290,6 +295,173 @@ class _ResumeState extends State<Resume> {
                 ),
                 SizedBox(
                   height: 20,
+                ),
+                Container(
+                  height: 40,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Colors.black,
+                            value: "Male",
+                            groupValue: selected,
+                            onChanged: (value) {
+                              setState(() {
+                                selected = value!;
+                              });
+                            },
+                          ),
+                          Text("Male"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Colors.black,
+                            value: "Female",
+                            groupValue: selected,
+                            onChanged: (value) {
+                              setState(() {
+                                selected = value!;
+                              });
+                            },
+                          ),
+                          Text("Female"),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio(
+                            activeColor: Colors.black,
+                            value: "Others",
+                            groupValue: selected,
+                            onChanged: (value) {
+                              setState(() {
+                                selected = value!;
+                              });
+                            },
+                          ),
+                          Text("Others"),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  height: 40,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      SizedBox(
+                        width: 20,
+                      ),
+                      Row(
+                        children: [
+                          Text("18+",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  letterSpacing: 1)),
+                          Switch(
+                            activeColor: Colors.black,
+                            value: onOff,
+                            onChanged: (value) {
+                              setState(() {
+                                onOff = value;
+                              });
+                            },
+                          ),
+                          SizedBox(
+                            width: 20,
+                          ),
+                          Text("Graduation",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 15,
+                                  letterSpacing: 1)),
+                          Switch(
+                            activeColor: Colors.black,
+                            value: onOff2,
+                            onChanged: (value) {
+                              setState(() {
+                                onOff2 = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  alignment: Alignment.center,
+                  height: 40,
+                  width: 300,
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: InkWell(
+                    onTap: () {
+                      showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                            alignment: Alignment.center,
+                            title: Text("Confirm to submit ?",style: TextStyle(color: Colors.black,fontWeight: FontWeight.bold,fontSize: 15,letterSpacing: 2)),
+                            content: Row(
+                              children: [
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      exit(0);
+                                    });
+                                  },
+                                  child: Text("Yest"),
+                                ),
+                                SizedBox(width: 20,),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    setState(() {
+                                      Navigator.pop(context);
+                                    });
+                                  },
+                                  child: Text("No"),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    child: Text(
+                      "Submit",
+                      style: TextStyle(
+                        letterSpacing: 2,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black,
+                      ),
+                    ),
+                  ),
                 ),
               ],
             ),
